@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html theme="menu">
+    <head>
+        <!--meta info-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+        <!--links-->
+        <link rel="stylesheet" href="menuslide.css">
+        <title>Menu</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div id="page" class="flex-row">
+                <div id="textBtns" class="flex-column">
+                    <div id="menuTextColumn" class="flex-column">
+                        <h2>Menu</h2>
+                        <div id="menuDesc">We change our menu every season. Here is what we are currently dishing up</div>
+                    </div>
+                     
+                    <div id="menuBtns" class="flex-column">
+                        <button class="MenuBtn-active">Food Menu</button>
+                        <button class="MenuBtn">Drinks Menu</button>
+                        <button  class="MenuBtn">Takeaway Menu</button>
+                    </div>
+                </div>
+
+                <div id="menuImgWrap">
+                    <img class="MenuImg-active" src="png/img1.png" ></img>
+                    <img class="MenuImg" src="png/img2.png"></img>
+                    <img class="MenuImg" src="png/img3.png" ></img>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var currentActive = 0;
+            btns = document.getElementById('menuBtns').children;
+            imgs = document.getElementById('menuImgWrap').children;
+
+            async function changeActiveTo(idx) {
+                imgs[currentActive].className = "MenuImg";
+                btns[currentActive].className = "MenuBtn";
+                currentActive = idx;
+                imgs[idx].className = "MenuImg-active";
+                btns[idx].className = "MenuBtn-active";
+            };
+
+            async function addEventListeners(){
+                for(var i = 0; i<btns.length; i++) {
+                    btn = btns[i];
+                    btn.imgID = i;
+                    btn.addEventListener('click', (e)=>{changeActiveTo(e.currentTarget.imgID)});
+                };
+            };
+            addEventListeners();
+        </script>
+    </body>
+</html> 
